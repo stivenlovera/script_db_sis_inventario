@@ -169,8 +169,11 @@ INSERT INTO detalle(cantidad,precio_unitario,precio_total,id_producto,id_entrada
 INSERT INTO detalle(cantidad,precio_unitario,precio_total,id_producto,id_entrada) VALUES ("50","7","350","2","1");
 INSERT INTO detalle(cantidad,precio_unitario,precio_total,id_producto,id_entrada) VALUES ("50","7","350","3","1");
 
-
-
+/*mostrar  usuario*/
+SELECT persona.nombre, persona.apellido, persona.dirrecion, persona.celular, acceso_user.id,acceso_user.contrasena FROM persona INNER JOIN acceso_user on persona.ci=acceso_user.ci
+/*mostrar fecha de entrada*/
+SELECT entrada.fecha as fecha_entrada,entrada.cantidad, proveedor.nombre, persona.nombre FROM persona INNER JOIN acceso_user INNER JOIN entrada INNER JOIN proveedor on persona.ci=acceso_user.ci AND entrada.id_acceso_user=entrada.id_acceso_user AND entrada.id_proveedor=proveedor.id_proveedor
+/*mostrar productos registradas en entradas*/
 SELECT entrada.fecha as fecha_entrada, producto.nombre,producto.descripcion,detalle.precio_unitario,detalle.cantidad FROM entrada inner JOIN detalle inner JOIN producto on entrada.id_entrada=detalle.id_entrada and detalle.id_producto=producto.id_producto  
-
-
+/*mostrar categoria y producto*/
+SELECT categoria.descripcion,producto.nombre, producto.descripcion FROM producto INNER JOIN categoria on producto.id_categoria=categoria.id_categoria
